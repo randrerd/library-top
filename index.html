@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Firebase scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+
+    <!-- Firebase Auth UI -->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css"
+    />
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h2 class="authCTA">Please sign in first</h2>
+      <div class="uiContainer flex" id="firebaseUIContainer"></div>
+      <div class="libraryContainer hidden">
+        <h1>Welcome to your library</h1>
+        <p class="hidden noBooksText">
+          Oops, it looks like you have not added any books
+        </p>
+        <div class="booksWrapper"></div>
+        <button class="newBookBtn largeBtn">New Book</button>
+        <form
+          onsubmit="event.preventDefault()"
+          action=""
+          class="addBookContainer hidden"
+        >
+          <label for="title">Title</label>
+          <input type="text" name="title" id="titleInput" required />
+
+          <label for="author">Author</label>
+          <input type="text" name="author" id="authorInput" required />
+
+          <label for="Pages">Pages</label>
+          <input type="text" name="pages" id="pagesInput" required />
+
+          <label for="read">Have you read it?</label>
+          <input type="checkbox" name="read" id="readInput" />
+
+          <button class="largeBtn" type="submit" id="submitBtn">Add</button>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
