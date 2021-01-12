@@ -1,0 +1,354 @@
+$font-stack: "Montserrat", sans-serif;
+
+%form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid black;
+  padding: 2rem 1rem;
+  width: 25%;
+  min-width: 17rem;
+}
+%button {
+  background: black;
+  border: 3px solid transparent;
+  color: white;
+  padding: 0.55em 0.5em;
+}
+
+// REMOVED STYLES
+//.bookContainer{
+// min-width: 14rem;
+// height: 18rem;
+//}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}
+
+//Components
+button {
+  @extend %button;
+  &.btn {
+    &-login {
+      &-guest {
+        background: white;
+        border: 3px solid black;
+        color: black;
+      }
+    }
+    &-library {
+      &-newbook {
+        margin-top: auto;
+        padding: 0.85rem 0.75rem;
+        font-size: 1rem;
+      }
+      &-addbook {
+        margin-top: 1rem;
+        align-self: center;
+      }
+    }
+    &-times {
+      font-weight: 600;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 0.25rem;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem;
+      margin-top: 0.15rem;
+    }
+    &-read {
+      margin-top: 1rem;
+      align-self: center;
+      margin-top: auto;
+    }
+  }
+}
+
+.input-wrapper {
+  position: relative;
+
+  &-email-login {
+    &-password {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.75s ease-out;
+      &.show {
+        visibility: visible;
+        opacity: 1;
+        position: relative;
+        bottom: 0;
+      }
+    }
+    &-name {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.75s ease-out;
+      &.show {
+        visibility: visible;
+        opacity: 1;
+        position: relative;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+input {
+  margin-bottom: 0.75rem;
+  padding-left: 0.2rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  &:focus ~ label {
+    bottom: 2rem;
+    padding-left: 0.05rem;
+    background: white;
+    font-size: 0.75rem;
+    padding-right: 0.25rem;
+    border-radius: 0.125rem;
+  }
+  &:valid ~ label {
+    bottom: 2rem;
+    padding-left: 0.05rem;
+    background: white;
+    font-size: 0.75rem;
+    padding-right: 0.25rem;
+    border-radius: 0.125rem;
+  }
+}
+label {
+  position: absolute;
+  transition: 0.3s ease;
+  left: 0.5rem;
+  margin-top: 1.5px;
+  font-size: 0.95rem;
+  z-index: 10;
+
+  &.span {
+    position: initial;
+  }
+}
+
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.9);
+  transition: opacity 0.25s ease;
+  z-index: 20;
+  form {
+    @extend %form;
+    margin-top: 8rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    h2 {
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .errorMsg {
+      font-size: 0.75rem;
+      width: 85%;
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+//Sections
+
+.main {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5%;
+  }
+  &-heading {
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    margin-top: 2em;
+  }
+  &-auth {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 3rem;
+      padding-bottom: 5rem;
+
+      form {
+        @extend %form;
+        min-width: 17rem;
+        border-width: 6px;
+        margin-top: 2rem;
+        padding: 2.5rem 0.5rem;
+        h2 {
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+    &-error {
+      font-size: 0.7rem;
+      margin-bottom: 0.7em;
+      width: 75%;
+      text-align: center;
+    }
+
+    &-btn-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        @extend %button;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+    &-email-login {
+      &-wrapper {
+        flex-direction: column;
+        align-items: center;
+        button {
+          align-self: flex-end;
+        }
+        .hidden {
+          display: initial;
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          transition: all 0.75s ease-out;
+
+          &.show {
+            visibility: visible;
+            opacity: 1;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+  &-library {
+    &-container {
+      margin-top: 5rem;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      min-height: 20rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    &-greeting-container {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      h1:nth-child(2) {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+  &-books {
+    &-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 5rem;
+      margin-right: 5rem;
+      width: 75%;
+      min-height: 17rem;
+      justify-content: center;
+
+      @media (min-width: 480px) {
+        justify-content: flex-start;
+      }
+    }
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      padding: 2rem;
+      padding-bottom: 1rem;
+      border: 5px solid black;
+      margin-right: 0.5rem;
+      margin-bottom: 1rem;
+      max-width: 12rem;
+      height: 16rem;
+      width: 95%;
+
+      p,
+      h3 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      p:nth-child(4) {
+        margin-top: auto;
+      }
+
+      p:nth-child(n + 4) {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+.footer {
+  &-container {
+    width: 85%;
+  }
+  &-options {
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 5rem;
+      font-size: 0.75rem;
+      text-align: right;
+
+      a {
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          text-decoration: underline;
+          text-decoration-thickness: 0.05%;
+        }
+      }
+      p {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
