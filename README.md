@@ -2,7 +2,7 @@
 
 # Library Project
 
-This project is part of The Odin Project learning path, the challenge was too build an app that allows the user to add, remove, modify books.
+This project is part of The Odin Project learning path, the challenge was to build an app that allows the user to add, remove, modify books.
 
 ## Tech and resources used:
 
