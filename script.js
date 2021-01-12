@@ -417,9 +417,8 @@ const firebaseUtils = (() => {
 
   firebase.auth().onAuthStateChanged((user) => {
     //Hides Auth UI when user logged in and shows library
-
-    //Waits to make sure it has the updated user information
     if (user) {
+      //Waits to make sure it has the updated user information
       setTimeout(() => {
         hideElement(authUIContainer);
         hideElement(mainHeading);
@@ -535,7 +534,9 @@ const handleError = (errorElement, err) => {
     (object) => object.errorCode === code
   )[0];
 
-  errorElement.innerText = currentError.message;
+  setTimeout(() => {
+    errorElement.innerText = currentError.message;
+  }, 250);
 };
 const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
